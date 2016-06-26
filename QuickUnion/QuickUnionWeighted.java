@@ -1,9 +1,14 @@
-class QuickUnion {
+class QuickUnionWeighted {
     
     public int[] data;
+    public int[] sz;
     
-    QuickUnion(int n){
+    QuickUnionWeighted(int n){
         data = new int[n];
+        sz = new int[n];
+         for(int i=0; i<n; i++){
+            sz[i]=1;
+        }
         for(int i=0; i<n; i++){
             data[i]=i;
         }
@@ -28,7 +33,15 @@ class QuickUnion {
     
     public Boolean makeUnion(int p,int q){
         int x= findRoot(p);
-        data[q]=x;
+        int y= findRoot(q);
+        if(sz[x]>sz[y]){
+           data[q]=x;
+           sz[x]=sz[x]+sz[y];
+        }
+        else{
+           data[p]=y; 
+           sz[y]=sz[x]+sz[y];
+        }
         return true;
     }
     
@@ -38,4 +51,5 @@ class QuickUnion {
             System.out.println("  "+ i+" is connected to "+data[i]);
         }
     }
+    
 }

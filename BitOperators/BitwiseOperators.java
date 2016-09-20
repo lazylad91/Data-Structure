@@ -14,7 +14,7 @@ class BitwiseOperators {
         
         // Test of ^(XOR) Operator
         // answer is 1 if both bits are different
-        // 3^4 i.e 011 & 100 = 111
+        // 3^4 i.e 011 ^ 100 = 111
         System.out.println(3 ^ 4);
         
         // Test of ~(NOT) Operator

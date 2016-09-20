@@ -48,6 +48,6 @@ class BitwiseOperators {
         // 4 = 100    4 >> 2 = 001
         System.out.println(5 >> 2);
         System.out.println(4 >> 2);
-        System.out.println(-8 >> 2);
+        System.out.println(8 >>> 2);
     }
 }

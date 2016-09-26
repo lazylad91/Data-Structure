@@ -14,7 +14,7 @@ class SwapBits {
             // the real number
             // Also if u xor with 0 that number never change as 0 ^ 0 = 0 and 0 ^ 1 = 1
             // For bitmask
-            
+            // The time complexity of this is O(1)
             long bitmask = (1L<<i) | (1L<<j);
             x ^=bitmask;
         }

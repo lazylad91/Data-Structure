@@ -36,28 +36,35 @@ public class FindMinimum {
     }
     
     public static int findMinimum(int n){
+        // Integer to keep track of 3 consequent integers
         int low=0,mid=0,high=0;
         String ns = String.valueOf(n);
-        int len = ns.length();
+        int len = ns.length();   // Length of the integer
         int i=0;
-        while(i<len-2){
-            if((ns.charAt(i)>=ns.charAt(i+1)) && (ns.charAt(i+1) > ns.charAt(i+2))){
+        while(i<len-2){             
+            if((ns.charAt(i)>=ns.charAt(i+1)) && (ns.charAt(i+1) > ns.charAt(i+2))) // checking whether low>=mid>high
+            {
                 low=i;
                 mid=i+1;
                 high=i+2;
                 break;
             }
-            i++;
+            i++; //Incrementing the counter
         }
         StringBuilder sb = new StringBuilder(ns);
-        if(low!=mid){
-            sb.deleteCharAt(mid);
+        if(low!=mid)   // We found 3 consecutive decreasing integers
+        {
+            sb.deleteCharAt(mid); // Swapping middle one with low
         }
-        else{
-            if(ns.charAt(len-2)>ns.charAt(len-1)){
+        // Swapping last two non significant digits
+        else
+        {
+            if(ns.charAt(len-2)>ns.charAt(len-1))
+            {
                 sb.deleteCharAt(len-1);
             }
-            else{
+            else
+            {
                 sb.deleteCharAt(len-2);
             }
         }

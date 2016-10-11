@@ -6,7 +6,7 @@
  *     ListNode(int x) { val = x; }
  * }
  */
-public class Solution {
+public class DeleteNthElement {
     public ListNode removeNthFromEnd(ListNode head, int n) {
         if(head == null) return null;
         // We are appending a node with value 0 so that we can handle the case with only 1 element, otherwise if we start with head only

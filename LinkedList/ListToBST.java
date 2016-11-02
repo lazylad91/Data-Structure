@@ -24,8 +24,8 @@ public class ListToBST {
     public static TreeNode toBST(ListNode head, ListNode tail){
             ListNode slow = head;
             ListNode fast = head;
-            if(head==tail) return null;
-            while(fast!=tail && fast.next!=tail){
+            if(head==tail) return null;    // this mean slow and head was same and as slow val is already used as root so no need to process this now
+            while(fast!=tail && fast.next!=tail){         
                 slow = slow.next;
                 fast = fast.next.next;
             }

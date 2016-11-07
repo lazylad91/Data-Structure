@@ -25,8 +25,8 @@ public class CourseSchedule{
         }
         
       
-        HashMap<Integer,boolean> visited = new HashMap<Integer,boolean>();
-        HashMap<Integer,boolean> onset = new HashMap<Integer,boolean>();
+        HashMap<Integer,Boolean> visited = new HashMap<Integer,Boolean>();
+        HashMap<Integer,Boolean> onset = new HashMap<Integer,Boolean>();
         
         for(Integer i: courseSet)
           {
@@ -50,9 +50,9 @@ public class CourseSchedule{
     }
     
     
-    public static boolean dfs(int numCourses,HashMap<Integer,boolean> visited,HashMap<Integer,boolean> cycle,HashMap<Integer,List<Integer>> adjList,int current_label,int vertexNo,Stack<Integer> stk){
-        visited.get(vertexNo)=true;
-        cycle.get(vertexNo)=true;
+    public static boolean dfs(int numCourses,HashMap<Integer,Boolean> visited,HashMap<Integer,Boolean> cycle,HashMap<Integer,List<Integer>> adjList,int current_label,int vertexNo,Stack<Integer> stk){
+        visited.put(vertexNo,true);
+        cycle.put(vertexNo,true);
         for(int i : adjList.get(vertexNo)){
             if(visited.get(i)==false){
               if(!dfs(numCourses,visited,cycle,adjList,current_label,i,stk)) return false;
@@ -60,7 +60,7 @@ public class CourseSchedule{
               return false;
         }
         stk.push(vertexNo);
-        cycle.get(vertexNo)=false;
+        cycle.put(vertexNo,false);
         return true;
     }
 

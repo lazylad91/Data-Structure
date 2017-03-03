@@ -1,13 +1,13 @@
 /* First way is to sort both the string
 and then use equal method if equal then
 return true else false */
-public class Check2StringPalindrome{
+public class Check2StringPermutation{
     public static void main(String[] args){
-        System.out.println(checkPalindrome("catbat","tcabta"));
+        System.out.println(checkPermutation("catbat","tcabta"));
     }
     
-    public static boolean checkPalindrome(String s,String t){
-        if(s.length()!=t.length()) // As if lenghts are not equal then cant be palindrome
+    public static boolean checkPermutation(String s,String t){
+        if(s.length()!=t.length()) // As if lenghts are not equal then cant be permutation
         return false;
         
         int[] letterCounts = new int[128];

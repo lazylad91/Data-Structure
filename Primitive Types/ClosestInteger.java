@@ -3,7 +3,7 @@
 public class ClosestInteger {
     
     public static void main(String[] args){
-        System.out.println("Closest integer of 6 is "+ findClosestInteger(6L));
+        System.out.println("Closest integer of 10 is "+ findClosestInteger(10L));
     }
     /* Weight of integer is number of 1 in binary number like in 1101 weight is 3
     In this problem we have to find n which is closest integer of m which got the same weight and
@@ -20,7 +20,7 @@ public class ClosestInteger {
     public static long findClosestInteger(Long x){
         int noOfBit = 63; // As only positive integers are considered        
     for(int i=0; i<63-1 ; ++i){
-           if ((((x >>> i) & 1) != (( x >>> (i+1)) & 1))) {
+           if (((((x >>> i) & 1)==0) && ((( x >>> (i+1)) & 1))==1)) {
                x ^= (1L << i) | (1L << (i+1));
                return x;
            }

@@ -27,7 +27,7 @@ public class PalindromePermutation{
         return false;    
     }   
     public static boolean checkValidChar(char c){
-        if(c>='a' || c<='z')
+        if(c>='a' && c<='z')
             return true;
         return false;
         }

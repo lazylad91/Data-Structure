@@ -8,7 +8,7 @@ public class OneAway {
     }
     
     public static boolean oneEdit(String first,String second){
-        if(first.length()-second.length()>1)
+        if(Math.abs(first.length()-second.length())>1)
             return false;
         if(first.length()== second.length())
             return oneEditReplace(first,second);

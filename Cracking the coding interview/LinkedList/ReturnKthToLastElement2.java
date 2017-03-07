@@ -31,6 +31,8 @@ public class ReturnKthToLastElement2{
         LinkedList p2 = l;
         int i=0;
         while(i < k){  // 1-2-3-4-5-6-7  k=3 p1=1 p2=1
+            if(p1==null)
+            return null;
             p1=p1.next; 
             i++;
         }           

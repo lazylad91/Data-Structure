@@ -46,6 +46,7 @@ public class RemoveDuplicates{
             }
             l = l.next;
         }
+        System.out.println(l);
         return head;
     }
 }

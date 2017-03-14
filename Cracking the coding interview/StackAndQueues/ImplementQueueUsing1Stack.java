@@ -1,6 +1,13 @@
 import java.util.*;
 
-// Using 2 stacks
+// Using 1 stacks
+// This is the method which reverse the stack everytime something is added and keep the data as in queue, which
+// is expensive.
+// Better way to do this is - during dequeue recurse it and put every popped value in temp.
+// When u reached at last value pop it and return it. and then put everything back in stack as it is.
+// Link - https://github.com/sagardafle/DataStructures-Algorithms/blob/master/DataStructures/Queues/Implementation/QueueUsing1Stack.java
+
+
 public class ImplementQueueUsing1Stack {
     public static void main(String[] args){
         ImplementQueueUsing1Stack sm = new ImplementQueueUsing1Stack();

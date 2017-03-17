@@ -20,34 +20,36 @@ public class BinaryTreePostOrderTraversal {
         postOrder(node1);
     }
     
-    public static void postOrder(BinaryTreeNode node){
+    public static void postOrder(BinaryTreeNode node)
+    {
         Stack<BinaryTreeNode> st = new Stack<BinaryTreeNode>();
-       
-       while(true){
-           if(node!=null)
-           {
-               System.out.println("pushing in stack - " + node.data);
-               st.push(node);
-               node = node.left;
-           }
-           
-           else {
+        while(true){
+            
+            if(node!=null){
+                if(node.right!=null)
+                    st.push(node.right);
+                st.push(node);
+                node = node.left!=null? node.left : null;
+            }
+            
+            else {
                 if(st.isEmpty())
                     break;
-               if(st.peek().getRight()==null){
-                   node = st.pop();
-                   System.out.println(node.data);
-                   if(node==st.peek().getRight()){
-                       node = st.pop();
-                       System.out.println(node.data);
-                   }
-                 node=null;
-               }
-               else{
-                   node=st.peek().getRight();
-               }
-           }
-       } 
+                
+                BinaryTreeNode temp = st.pop();
+                
+                if(temp.getRight()!=null && !st.isEmpty() && temp.getRight() == st.peek()){
+                    node = st.pop();
+                    st.push(temp);
+                    temp=null;
+                }
+                else{
+                    System.out.println(temp.data);
+                    node = null;
+                }
+            }
+            
+        }  
        
     }
 }

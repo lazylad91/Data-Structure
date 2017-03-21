@@ -5,6 +5,19 @@ There are 2 ways to do this problem
     Top down approach
     1) check root.val-sum == 0 and root doesnt have left and right child return true
     2) if root.left!=null call sameFUnc(root.left,sum-root.data) and same with right tree
+    
+     public boolean hasPathSum(TreeNode root, int sum) {
+        if(root == null) return false;
+        
+        if(root.val-sum==0 && root.left==null && root.right==null)
+            return true;
+            
+        return hasPathSum(root.left, sum-root.val)|| hasPathSum(root.right,sum-root.val);
+        
+        return false;
+    }
+    
+    
 
 2 - Non recursive
     We have to iterate the tree and we have to reach till all leaves

@@ -17,6 +17,8 @@ return its bottom-up level order traversal as:
   [9,20],
   [3]
 ]
+
+We can use stack also, but we dont know the end of level for that we can put null after every level in queue maybe
 */
 
 /**

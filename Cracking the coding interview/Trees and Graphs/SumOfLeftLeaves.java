@@ -6,6 +6,19 @@
  *     TreeNode right;
  *     TreeNode(int x) { val = x; }
  * }
+ * 
+ * Recursive solution 
+ *        /* int ans=0;
+        if(root.left!=null){
+            if(root.left.left==null && root.left.right==null)
+                ans= ans + root.left.val;
+            else
+            ans = ans + sumOfLeftLeaves(root.left);
+        }
+        
+        if(root.right!=null){
+            ans = ans + sumOfLeftLeaves(root.right);
+        }*/
  */
 public class SumOfLeftLeaves{
     public int sumOfLeftLeaves(TreeNode root) {

@@ -9,7 +9,7 @@ Given the below binary tree,
       / \
      2   3
      
-Its equivalent to diameter only, instead of nodes we have to count the sume     
+Its equivalent to diameter only, instead of nodes we have to count the sum   
  */
 
 /**

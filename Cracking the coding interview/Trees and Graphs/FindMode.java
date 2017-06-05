@@ -42,6 +42,7 @@ public class Solution {
         return;
         
         traverseTree(root.left,list);
+        
         if(prev!=null){
             if(prev==root.val){
                 count++;

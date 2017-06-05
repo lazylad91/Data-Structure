@@ -29,7 +29,7 @@ public class ReverseLinkedList {
     }
     
       // Simple reverse linkedlist 
-    public static LinkedList reverse(LinkedList head){
+    public static LinkedList reverse(LinkedList head){/*
         LinkedList last = head;
         LinkedList current = head.next;
         last.next = null;
@@ -41,5 +41,14 @@ public class ReverseLinkedList {
             current = temp;
         }
         return last;
+    */
+        LinkedList newHead = null;
+        while(head!=null){
+            LinkedList next = head.next;
+            head.next=newHead;
+            newHead = head;
+            head = next;
+        }
+        return newHead;
     }
 }

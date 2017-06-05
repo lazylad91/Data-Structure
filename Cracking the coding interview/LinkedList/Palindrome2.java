@@ -31,7 +31,7 @@ public class Palindrome2{
         
         Stack<Integer> st = new Stack<Integer>();
         
-        // fast will be equal to null  in case of even and fast.next will be equal to null
+        // fast will be equal to null-in case of even and fast.next will be equal to null
         //in case of odd list. Even - it will stop at first element of other half of list Fast = Null
         //and for Odd - it will stop at middle element of list. Fast = Last element
         while(fast!=null && fast.next!=null) {

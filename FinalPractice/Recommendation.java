@@ -1,23 +1,19 @@
-import java.util.HashMap;
-import java.util.HashSet;
-import java.util.List;
-import java.util.Map;
-import java.util.Map.Entry;
-import java.util.Set;
-import java.util.stream.Collectors;
+import java.util.*;
+
+
 
 public class Recommendation
 {
-	private final Map<Integer, Node> sets = new HashMap<>();
+	private final Map<String, Node> sets = new HashMap<>();
 
-	public void add(int value)
+	public void add(String value)
 	{
 		if (sets.containsKey(value))
 			return;
 		sets.put(value, new Node(value));
 	}
 
-	public Node find(int value)
+	public Node find(String value)
 	{
 		Node node = sets.get(value);
 		if (node == null)
@@ -31,7 +27,7 @@ public class Recommendation
 		return node;
 	}
 
-	public Node union(int val1, int val2)
+	public Node union(String val1, String val2)
 	{
 		Node node1 = find(val1);
 		Node node2 = find(val2);
@@ -56,41 +52,45 @@ public class Recommendation
 		return result;
 	}
 	
-	public int countSets()
+	public Set<String> getSets()
 	{
-		int count = 0;
-		for (Entry<Integer, Node> entry : sets.entrySet())
-		{
-			if (entry.getValue().parent == entry.getValue())
-				count++;
-		}
-		return count;
-	}
-	
-	public List<Set<Integer>> getSets()
-	{
-		Map<Integer, Set<Integer>> map = new HashMap<>();
-		for (Entry<Integer, Node> entry : sets.entrySet())
+	    int maxSize = Integer.MIN_VALUE;
+	    String parentNode = "";
+		Map<String, Set<String>> map = new HashMap<>();
+		for (Map.Entry<String, Node> entry : sets.entrySet())
 		{
 			Node n = find(entry.getValue().value);
-			Set<Integer> set = map.get(n.value);
+			Set<String> set = map.get(n.value);
 			if (set == null)
 			{
-				set = new HashSet<>();
+				set = new TreeSet<String>();
 				map.put(n.value, set);
 			}
 			set.add(entry.getValue().value);
+			int currentSize = set.size();
+			if(maxSize < currentSize){
+                maxSize = currentSize;
+                parentNode = n.value;
+			}
+			else if(maxSize == currentSize){
+			    String currentItem = (String)((TreeSet)set).first();
+			    String maxItem = (String)((TreeSet)(map.get(parentNode))).first();
+			    if(currentItem.compareTo(maxItem)<0){
+			        parentNode = n.value;
+			    }
+			}
 		}
-		return map.entrySet().stream().map(e -> e.getValue()).collect(Collectors.toList());
+		
+		return map.get(parentNode);
 	}
 
 	private class Node
 	{
-		private final int value;
+		private final String value;
 		private Node parent;
 		private int rank;
 
-		public Node(int value)
+		public Node(String value)
 		{
 			this.value = value;
 			parent = this;
@@ -100,20 +100,37 @@ public class Recommendation
 	public static void main(String[] args)
 	{
 		Recommendation disjointSets = new Recommendation();
+		String[][] input = new String[10][2];
+		input[0][0] = "item201";
+		input[0][1] = "item21";
+		input[1][0] = "item31";
+		input[1][1] = "item14";
+		input[2][0] = "item2";
+		input[2][1] = "item3";
+		input[3][0] = "item5";
+		input[3][1] = "item6";
+		input[4][0] = "item7";
+		input[4][1] = "item8";
+		input[5][0] = "item9";
+		input[5][1] = "item10";
+		input[6][0] = "item6";
+		input[6][1] = "item7";
+		input[7][0] = "item81";
+		input[7][1] = "item91";
+		input[8][0] = "item31";
+		input[8][1] = "item11";
+		input[9][0] = "item15";
+		input[9][1] = "item16";
 		
-		disjointSets.add(1);
-		disjointSets.add(2);
-		disjointSets.add(3);
-		disjointSets.add(4);
-		disjointSets.add(5);
-		disjointSets.add(6);
-		
-		disjointSets.union(1, 2);
-		disjointSets.union(2, 3);
-		disjointSets.union(2, 4);
-		disjointSets.union(5, 6);
-		
-		System.out.println(disjointSets.countSets());
+		for(int i=0; i<input.length; i++){
+		    if(input[i].length>0)
+		    disjointSets.add(input[i][0]);
+		    if(input[i].length>1)
+		    disjointSets.add(input[i][1]);
+		    if(input[i].length==2)
+		    disjointSets.union(input[i][0],input[i][1]);
+		}
+	
 		System.out.println(disjointSets.getSets());
 	}
 
